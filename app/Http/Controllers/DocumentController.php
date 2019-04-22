@@ -40,8 +40,8 @@ class DocumentController extends Controller
             'title' => ['required', 'min:6']
         ]);
 
-        $attributes['user_id'] = 1;
-        
+        $attributes['user_id'] = auth()->id();
+                
         Document::create($attributes);
 
         return redirect('/documents');
