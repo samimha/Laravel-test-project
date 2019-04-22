@@ -14,7 +14,8 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        //
+        $documents = Document::all();
+        return view('documents.index', compact('documents'));
     }
 
     /**
@@ -24,7 +25,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('documents.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Document::create([
+            'title' => request('title'),
+            'user_id' => 1
+        ]);
+
+        return redirect('/documents');
     }
 
     /**
@@ -46,7 +52,7 @@ class DocumentController extends Controller
      */
     public function show(Document $document)
     {
-        //
+        return view('documents.show', compact('document'));
     }
 
     /**
@@ -57,7 +63,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
-        //
+        return view('documents.edit', compact('document'));
     }
 
     /**
@@ -69,7 +75,8 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        //
+        $document->update(request(['title']));
+        return redirect('/documents');
     }
 
     /**
@@ -80,6 +87,8 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        $document->delete();
+
+        return redirect('/documents');
     }
 }
