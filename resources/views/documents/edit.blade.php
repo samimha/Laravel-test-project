@@ -15,9 +15,17 @@
                 value="{{ $document->title }}"
             />
         </div>
-        <br>
+        <hr>
         <div>
             <button type="submit">Update document</button>
+        </div>
+    </form>
+    <br>
+    <form method="POST" action="/documents/{{ $document->id }}">
+        @csrf 
+        @method('DELETE')
+        <div>
+            <button type="submit">Delete document</button>
         </div>
     </form>
 </div>
