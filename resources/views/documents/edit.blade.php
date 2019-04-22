@@ -13,6 +13,7 @@
                 name="title"
                 placeholder="title"
                 value="{{ $document->title }}"
+                required
             />
         </div>
         <hr>

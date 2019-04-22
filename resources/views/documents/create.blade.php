@@ -7,7 +7,7 @@
     <form method="POST" action="/documents">
         @csrf
         <div>
-            <input type="text" name="title" placeholder="title" />
+            <input type="text" name="title" placeholder="title" required/>
         </div>
         <br />
         <div>
