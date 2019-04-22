@@ -36,10 +36,13 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        Document::create([
-            'title' => request('title'),
-            'user_id' => 1
+        $attributes = request()->validate([
+            'title' => ['required', 'min:6']
         ]);
+
+        $attributes['user_id'] = 1;
+        
+        Document::create($attributes);
 
         return redirect('/documents');
     }
@@ -75,7 +78,10 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        $document->update(request(['title']));
+        $document->update(request()->validate([
+            'title' => ['required', 'min:6']
+        ]));
+        
         return redirect('/documents');
     }
 
