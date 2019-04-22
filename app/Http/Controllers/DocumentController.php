@@ -66,6 +66,8 @@ class DocumentController extends Controller
      */
     public function edit(Document $document)
     {
+        $this->authorize('update', $document);
+
         return view('documents.edit', compact('document'));
     }
 
@@ -78,6 +80,8 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
+        $this->authorize('update', $document);
+
         $document->update(request()->validate([
             'title' => ['required', 'min:6']
         ]));
@@ -93,6 +97,8 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
+        $this->authorize('update', $document);
+        
         $document->delete();
 
         return redirect('/documents');
