@@ -19,5 +19,6 @@
             </div>
         </div>
     </div>
+    <a href="/documents">Go to documents</a>
 </div>
 @endsection
